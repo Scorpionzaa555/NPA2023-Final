@@ -42,7 +42,7 @@ def create():
         )
 
     if(resp.status_code == 204):
-        return "Cannot create: Interface loopback 66070099" #Add
+        return "Cannot create: Interface loopback 65070099" #Add
     if(resp.status_code >= 200 and resp.status_code <= 299):
         print("STATUS OK: {}".format(resp.status_code))
         return "Interface Loopback65070099 created."
@@ -63,25 +63,32 @@ def delete():
         return "Interface Loopback65070099 deleted."
     else:
         print('Error. Status Code: {}'.format(resp.status_code))
-        return "Cannot delete: Interface loopback 66070099" #Add
+        return "Cannot delete: Interface loopback 65070099" #Add
 
 
 def enable():
-    yangConfig = <!!!REPLACEME with YANG data!!!>
+    yangConfig = {
+        "ietf-interfaces:interface": {
+            "name": "Loopback65070099",
+            "type": "iana-if-type:softwareLoopback",
+            "enabled": True,
+        } #Add
+    }
 
-    resp = requests.<!!!REPLACEME with the proper HTTP Method!!!>(
-        <!!!REPLACEME with URL!!!>, 
-        data=json.dumps(<!!!REPLACEME with yangConfig!!!>), 
+    resp = requests.patch(
+        api_url + "/data/ietf-interfaces:interfaces/interface=Loopback65070099", #Add
+        data=json.dumps(yangConfig), #Add
         auth=basicauth, 
-        headers=<!!!REPLACEME with HTTP Header!!!>, 
+        headers=headers, #Add
         verify=False
         )
 
     if(resp.status_code >= 200 and resp.status_code <= 299):
         print("STATUS OK: {}".format(resp.status_code))
-        return "<!!!REPLACEME with proper message!!!>"
+        return "Interface loopback 65070099 is enabled successfully" #Add
     else:
         print('Error. Status Code: {}'.format(resp.status_code))
+        return "Cannot enable: Interface loopback 65070099" #Add
 
 
 def disable():
