@@ -19,9 +19,7 @@ accessToken = "Bearer NDdkZjczMDUtMjg1Yy00NWRlLTg3ZjYtYTY5YWQ1ZGE5NDIzZGY2NzZkMG
 # 3. Prepare parameters get the latest message for messages API.
 
 # Defines a variable that will hold the roomId
-roomIdToGetMessages = (
-    "<!!!REPLACEME with roomID of the NPA2023 Webex Teams room!!!>"
-)
+roomIdToGetMessages = "Y2lzY29zcGFyazovL3VzL1JPT00vNTFmNTJiMjAtNWQwYi0xMWVmLWE5YTAtNzlkNTQ0ZjRkNGZi" #Add
 
 while True:
     # always add 1 second of delay to the loop to not go over a rate limit of API calls
@@ -33,7 +31,7 @@ while True:
     getParameters = {"roomId": roomIdToGetMessages, "max": 1}
 
     # the Webex Teams HTTP header, including the Authoriztion
-    getHTTPHeader = {"Authorization": <!!!REPLACEME!!!>}
+    getHTTPHeader = {"Authorization": accessToken}
 
 # 4. Provide the URL to the Webex Teams messages API, and extract location from the received message.
     
