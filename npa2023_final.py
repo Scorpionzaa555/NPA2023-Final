@@ -75,15 +75,15 @@ while True:
 # 5. Complete the logic for each command
 
         if command == "create":
-            <!!!REPLACEME with code for create command!!!>     
+            responseMessage = create() #Add 
         elif command == "delete":
-            <!!!REPLACEME with code for delete command!!!>
+            responseMessage = delete() #Add
         elif command == "enable":
-            <!!!REPLACEME with code for enable command!!!>
+            responseMessage = enable() #Add
         elif command == "disable":
-            <!!!REPLACEME with code for disable command!!!>
+            responseMessage = disable() #Add
         elif command == "status":
-            <!!!REPLACEME with code for status command!!!>
+            responseMessage = status() #Add
         else:
             responseMessage = "Error: No command or unknown command"
         
