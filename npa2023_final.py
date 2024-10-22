@@ -6,14 +6,14 @@
 #######################################################################################
 # 1. Import libraries for API requests, JSON formatting, time, and (restconf_final or netconf_final).
 
-import requests
-import json
-import time
+import requests #Add
+import json #Add
+import time #Add
 
 #######################################################################################
 # 2. Assign the Webex hard-coded access token to the variable accessToken.
 
-accessToken = "Bearer <!!!REPLACEME with hard-coded token!!!>"
+accessToken = "Bearer NDdkZjczMDUtMjg1Yy00NWRlLTg3ZjYtYTY5YWQ1ZGE5NDIzZGY2NzZkMGYtMDVi_P0A1_2f0ec6fd-9694-4631-8bc4-8302c4fc4019" #Add
 
 #######################################################################################
 # 3. Prepare parameters get the latest message for messages API.
