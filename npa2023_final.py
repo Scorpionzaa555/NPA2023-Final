@@ -1,7 +1,7 @@
 #######################################################################################
-# Yourname:
-# Your student ID:
-# Your GitHub Repo: 
+# Yourname: Thanawan Chaemsathian
+# Your student ID: 65070099
+# Your GitHub Repo: https://github.com/Scorpionzaa555/NPA2023-Final.git
 
 #######################################################################################
 # 1. Import libraries for API requests, JSON formatting, time, and (restconf_final or netconf_final).
@@ -10,6 +10,7 @@ import requests #Add
 import json #Add
 import time #Add
 
+from restconf_final import create, delete, enable, disable, status #Add
 #######################################################################################
 # 2. Assign the Webex hard-coded access token to the variable accessToken.
 
@@ -90,18 +91,18 @@ while True:
 # 6. Complete the code to post the message to the Webex Teams room.
         
         # the Webex Teams HTTP headers, including the Authoriztion and Content-Type
-        postHTTPHeaders = HTTPHeaders = {"Authorization": <!!!REPLACEME!!!>, "Content-Type": <!!!REPLACEME!!!>}
+        postHTTPHeaders = HTTPHeaders = {"Authorization": accessToken, "Content-Type": "application/json"} #Add
 
         # The Webex Teams POST JSON data
         # - "roomId" is is ID of the selected room
         # - "text": is the responseMessage assembled above
-        postData = {"roomId": <!!!REPLACEME!!!>, "text": <!!!REPLACEME!!!>}
+        postData = {"roomId": roomIdToGetMessages, "text": responseMessage} #Add
 
         # Post the call to the Webex Teams message API.
         r = requests.post(
-            "<!!!REPLACEME with URL of Webex Teams Messages API!!!>",
-            data=json.dumps(<!!!REPLACEME!!!>a),
-            headers=<!!!REPLACEME!!!>,
+            "https://webexapis.com/v1/messages", #Add
+            data=json.dumps(postData), #Add
+            headers=postHTTPHeaders, #Add
         )
         if not r.status_code == 200:
             raise Exception(
