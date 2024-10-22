@@ -6,7 +6,9 @@
 #######################################################################################
 # 1. Import libraries for API requests, JSON formatting, time, and (restconf_final or netconf_final).
 
-<!!!REPLACEME with code for libraries>
+import requests
+import json
+import time
 
 #######################################################################################
 # 2. Assign the Webex hard-coded access token to the variable accessToken.
