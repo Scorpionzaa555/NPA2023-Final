@@ -15,19 +15,37 @@ basicauth = ("admin", "cisco")
 
 
 def create():
-    yangConfig = <!!!REPLACEME with YANG data!!!> 
+    yangConfig = {
+        "ietf-interfaces:interface": {
+            "name": "Loopback65070099",
+            "description": "created loopback by RESTCONF",
+            "type": "iana-if-type:softwareLoopback",
+            "enabled": True,
+            "ietf-ip:ipv4": {
+                "address": [
+                    {
+                        "ip": "172.30.99.1",
+                        "netmask": "255.255.255.0"
+                    }
+                ]
+            },
+            "ietf-ip:ipv6": {}
+        }
+    } #Add 
 
-    resp = requests.<!!!REPLACEME with the proper HTTP Method!!!>(
-        <!!!REPLACEME with URL!!!>, 
-        data=json.dumps(<!!!REPLACEME with yangConfig!!!>), 
+    resp = requests.put(
+        api_url + "/data/ietf-interfaces:interfaces/interface=Loopback65070099", #Add
+        data=json.dumps(yangConfig), #Add
         auth=basicauth, 
-        headers=<!!!REPLACEME with HTTP Header!!!>, 
+        headers=headers, #Add 
         verify=False
         )
 
+    if(resp.status_code == 204):
+        return "Cannot create: Interface loopback 66070099" #Add
     if(resp.status_code >= 200 and resp.status_code <= 299):
         print("STATUS OK: {}".format(resp.status_code))
-        return "<!!!REPLACEME with proper message!!!>"
+        return "Interface Loopback65070099 created."
     else:
         print('Error. Status Code: {}'.format(resp.status_code))
 
